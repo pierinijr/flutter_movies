@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_movies/core/core.dart';
+import 'package:flutter_movies/core/app.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

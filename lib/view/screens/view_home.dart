@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_movies/languages/generated/app_localizations.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 class ViewHome extends StatefulWidget {
@@ -24,7 +25,9 @@ class _ViewHomeState extends State<ViewHome> {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: const <Widget>[],
+          children: <Widget>[
+            Text(AppLocalizations.of(context)!.test)
+          ],
         ),
       ),
     );
