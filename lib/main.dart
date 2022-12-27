@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_movies/core/core.dart';
+import 'package:flutter_movies/core/app.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 void main() {
