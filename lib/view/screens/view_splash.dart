@@ -10,11 +10,16 @@ class ViewSplash extends StatefulWidget {
 }
 
 class _ViewSplashState extends State<ViewSplash> {
+  void loadApp(BuildContext context) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      FlutterNativeSplash.remove();
+      Utils.goView(context, "/home");
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    FlutterNativeSplash.remove();
-    Utils.goView(context, "/home");
-    
-    return Container();
+    loadApp(context);
+    return Scaffold(body: Container());
   }
 }
