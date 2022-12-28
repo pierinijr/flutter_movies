@@ -19,7 +19,7 @@ class FlutterMovies extends StatelessWidget {
           primarySwatch: Colors.blue,
         ),
         debugShowCheckedModeBanner: false,
-        initialRoute: "/home",
+        initialRoute: "/",
         routes: routes,
         localizationsDelegates: AppLocalizations.localizationsDelegates,
         supportedLocales: AppLocalizations.supportedLocales,
