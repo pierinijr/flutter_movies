@@ -10,5 +10,8 @@ final Map<String, WidgetBuilder> routes = {
   "/list": (context) => ViewList(
     listDetail: ModalRoute.of(context)!.settings.arguments as ListArgumentsModel
   ),
+  "/detail": (context) => ViewDetail(
+    movieId: ModalRoute.of(context)!.settings.arguments as String
+  ),
   // "/favorites": (context) => const ViewFavorites(),
 };
