@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_movies/core/constants/constants.dart';
+import 'package:flutter_movies/core/utils.dart';
 import 'package:flutter_movies/languages/generated/app_localizations.dart';
-import 'package:flutter_movies/model/now_playing_model.dart';
+import 'package:flutter_movies/model/list_arguments_model.dart';
 import 'package:flutter_movies/services/api_response.dart';
 import 'package:flutter_movies/view/widgets/buttons/button_text.dart';
 import 'package:flutter_movies/view/widgets/cards/card_movie_portrait/card_movie.dart';
@@ -28,7 +29,10 @@ class _CardListLandscapeCompletedState
     extends State<CardListLandscapeCompleted> {
   @override
   Widget build(BuildContext context) {
-    List<Results> movieList = widget.response.data.response.results;
+    ApiResponse<dynamic> response = widget.response;
+    dynamic data = response.data != null ? (response.data.response ?? []) : [];
+    List<dynamic> movieList = data.results ?? [];
+
     return Column(
       children: [
         Padding(
@@ -46,7 +50,9 @@ class _CardListLandscapeCompletedState
                 ButtonText(
                     label: AppLocalizations.of(context)!.more,
                     action: () {
-                      debugPrint("Abrir lista ver mais");
+                      Utils.goView(context, "/list",
+                          arguments: ListArgumentsModel(
+                              title: widget.title, type: data.runtimeType));
                     }),
             ],
           ),
@@ -65,6 +71,7 @@ class _CardListLandscapeCompletedState
                   ],
                 )
               : ListView.builder(
+                  primary: false,
                   scrollDirection: Axis.horizontal,
                   shrinkWrap: true,
                   itemCount: movieList.length,

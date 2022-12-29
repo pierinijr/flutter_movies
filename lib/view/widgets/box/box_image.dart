@@ -5,9 +5,15 @@ import 'package:flutter_movies/themes/colors.dart';
 import 'package:shimmer/shimmer.dart';
 
 class BoxImage extends StatefulWidget {
-  const BoxImage({super.key, this.image});
+  const BoxImage({
+    super.key, 
+    required this.width,
+    required this.height,
+    this.image});
 
   final String? image;
+  final double width;
+  final double height;
 
   @override
   State<BoxImage> createState() => _BoxImageState();
@@ -18,8 +24,8 @@ class _BoxImageState extends State<BoxImage> {
   Widget build(BuildContext context) {
     if (widget.image != null) {
       return SizedBox(
-        width: 150,
-        height: 190,
+        width: widget.width,
+        height: widget.height,
         child: DecoratedBox(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
@@ -43,8 +49,8 @@ class _BoxImageState extends State<BoxImage> {
                       baseColor: AppColors.primaryShimmer,
                       highlightColor: AppColors.secondaryShimmer,
                       child: Container(
-                        width: 150,
-                        height: 190,
+                        width: widget.width,
+                        height: widget.height,
                         decoration: const BoxDecoration(
                           color: AppColors.primaryShimmer,
                           shape: BoxShape.rectangle,

@@ -52,6 +52,7 @@ class _CardListLandscapeLoadingState extends State<CardListLandscapeLoading> {
           width: MediaQuery.of(context).size.width,
           height: 250,
           child: ListView.builder(
+            primary: false,
             scrollDirection: Axis.horizontal,
             shrinkWrap: true,
             itemCount: 10,

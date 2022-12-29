@@ -39,11 +39,18 @@ class _ViewHomeState extends State<ViewHome> {
           ),
         ),
       ),
-      body: Center(
-        child: CardListLandscape(
-          response: movieViewModel.response,
-          title: AppLocalizations.of(context)!.nowPlayingMovies,
-          moreButton: true,)),
+      body: SafeArea(
+        child: Center(
+          child: ListView(
+            primary: false,
+            children: [
+              CardListLandscape(
+                response: movieViewModel.response,
+                title: AppLocalizations.of(context)!.nowPlayingMovies,
+                moreButton: true,),
+            ],
+          )),
+      ),
       bottomNavigationBar: BottomAppBar(
         color: AppColors.secondaryColor,
         shape: const CircularNotchedRectangle(),

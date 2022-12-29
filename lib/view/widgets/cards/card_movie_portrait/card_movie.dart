@@ -40,7 +40,11 @@ class _CardMoviePortraitState extends State<CardMoviePortrait> {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.max,
             children: [
-              BoxImage(image: widget.movie.posterPath),
+              BoxImage(
+                image: widget.movie.posterPath,
+                width: 150,
+                height: 190,
+              ),
               LabelH6(label: widget.movie.title ?? ""),
               LabelH6(
                   label: releaseDate, color: AppColors.labelSecondaryColor),
