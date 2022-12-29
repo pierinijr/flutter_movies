@@ -1,27 +1,32 @@
 import 'dart:io';
 
+import 'package:flutter_movies/extension/response.dart';
 import 'package:flutter_movies/core/constants/constants.dart';
-import 'package:flutter_movies/model/movie_search_model.dart';
+import 'package:flutter_movies/model/now_playing_model.dart';
 import 'package:flutter_movies/services/api_status.dart';
 import 'package:http/http.dart' as http;
+import 'package:http/http.dart';
 
 class MovieServices {
   static String apiKey = Constants.environment.apiKey;
   static String movieSearch = Constants.endpoints.movieSearch;
   static String movieDetails = Constants.endpoints.movieDetails;
 
-  static Future getSearchMovies({String language = ""}) async {
-    dynamic response;
+  static Future getNowPlayingMovies(String language, int page) async {
+    Response response;
 
     try {
-      response = await http.get(Uri.parse("$movieSearch?api_key=$apiKey$language"));
-      if (response.statusCode == Constants.statusCode.success) {
-        return Success(response: MovieSearchModel.fromJson(response.body));
-      }
-
-      return Failure(
+      language = language.isNotEmpty ? "&language=$language" : "";
+      response = await http.get(Uri.parse("$movieSearch?api_key=$apiKey$language&page=$page"));
+      if (response.statusCode == Constants.statusCode.userInvalidResponse) {
+        return Failure(
           code: Constants.statusCode.userInvalidResponse,
           errorResponse: 'Invalid Response');
+      }
+
+      var jsonData = response.getData();
+      return Success(response: NowPlayingModel.fromJson(jsonData));
+      
     } on HttpException {
       return Failure(
           code: Constants.statusCode.noInternet,
