@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_movies/core/routes.dart';
 import 'package:flutter_movies/languages/generated/app_localizations.dart';
-import 'package:flutter_movies/view_model/movie_search_view_model.dart';
+import 'package:flutter_movies/view_model/now_playing_view_model.dart';
 import 'package:provider/provider.dart';
 
 class FlutterMovies extends StatelessWidget {
@@ -11,13 +11,10 @@ class FlutterMovies extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-          ChangeNotifierProvider(create: (_) => MovieSearchViewModel()),
+          ChangeNotifierProvider(create: (_) => NowPlayingViewModel()),
         ],
       child: MaterialApp(
         title: 'Flutter Movies',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
         debugShowCheckedModeBanner: false,
         initialRoute: "/",
         routes: routes,
