@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_movies/services/api_response.dart';
 import 'package:flutter_movies/view/widgets/lists/card_list_landscape/card_list_completed.dart';
-import 'package:flutter_movies/view/widgets/lists/card_list_landscape/card_list_error.dart';
+import 'package:flutter_movies/view/widgets/lists/card_list_error.dart';
 import 'package:flutter_movies/view/widgets/lists/card_list_landscape/card_list_loading.dart';
 
 class CardListLandscape extends StatefulWidget {
@@ -33,9 +33,9 @@ class _CardListLandscapeState extends State<CardListLandscape> {
             moreButton: widget.moreButton);
       case Status.error:
         String error = widget.response.message ?? "-";
-        return CardListLandscapeError(error: error);
+        return CardListError(error: error);
       default:
-        return const CardListLandscapeError();
+        return const CardListError();
     }
   }
 }
