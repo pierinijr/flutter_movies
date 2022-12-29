@@ -1,0 +1,12 @@
+{
+  "@@locale": "pt",
+  "test": "Test",
+  "welcome": "Boas vindas",
+  "findNewMovie": "Vamos encontrar um novo filme?",
+  "release": "Estreia",
+  "nowPlayingMovies": "Filmes em exibição",
+  "more": "Ver mais",
+  "statusError": "Algo deu errado!\nPor favor, tente novamente mais tarde!",
+  "error": "Error: ",
+  "emptyList": "Esta lista está vazia!"
+}
