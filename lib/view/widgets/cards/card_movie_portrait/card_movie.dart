@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_movies/core/constants/constants.dart';
+import 'package:flutter_movies/core/utils.dart';
 import 'package:flutter_movies/languages/generated/app_localizations.dart';
 import 'package:flutter_movies/model/now_playing_model.dart';
 import 'package:flutter_movies/themes/colors.dart';
@@ -31,7 +32,9 @@ class _CardMoviePortraitState extends State<CardMoviePortrait> {
       : 0;
     
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        Utils.goView(context, "/detail", arguments: widget.movie.id);
+      },
       child: SizedBox(
         width: 150,
         height: 250,
