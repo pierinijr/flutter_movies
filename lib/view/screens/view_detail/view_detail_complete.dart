@@ -29,6 +29,11 @@ class _ViewDetailCompleteState extends State<ViewDetailComplete> {
     String duration = AppLocalizations.of(context)!.duration +
         Utils.getTimeString(widget.details.runtime ?? 0);
 
+    String votes = "";
+    if (widget.details.voteCount != null) {
+      votes = "(${AppLocalizations.of(context)!.votes}${widget.details.voteCount})";
+    }
+    
     return Scaffold(
       body: NestedScrollView(
         headerSliverBuilder: (context, innerBoxIsScrolled) {
@@ -105,9 +110,18 @@ class _ViewDetailCompleteState extends State<ViewDetailComplete> {
                                     left: Constants.spacings.spacing8),
                                 child: LabelH4(
                                     label: (widget.details.voteAverage ?? 0)
+                                        .toStringAsFixed(2)
                                         .toString(),
                                     fontWeightType: FontWeight.bold,
                                     color: AppColors.ratingBar),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.only(
+                                    left: Constants.spacings.spacing8),
+                                child: LabelH4(
+                                      label: votes,
+                                      fontWeightType: FontWeight.bold,
+                                      color: AppColors.ratingBar),
                               )
                             ],
                           ),
