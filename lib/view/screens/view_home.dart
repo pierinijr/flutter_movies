@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_movies/core/constants/constants.dart';
+import 'package:flutter_movies/core/utils.dart';
+import 'package:flutter_movies/database/app_database.dart';
 import 'package:flutter_movies/languages/generated/app_localizations.dart';
+import 'package:flutter_movies/model/now_playing_model.dart';
 import 'package:flutter_movies/themes/colors.dart';
 import 'package:flutter_movies/view/widgets/labels/label_h4.dart';
 import 'package:flutter_movies/view/widgets/labels/label_h5.dart';
 import 'package:flutter_movies/view/widgets/lists/card_list_landscape/card_list.dart';
+import 'package:flutter_movies/view_model/favorites_view_model.dart';
 import 'package:flutter_movies/view_model/now_playing_view_model.dart';
 import 'package:provider/provider.dart';
 
@@ -42,43 +45,25 @@ class _ViewHomeState extends State<ViewHome> {
       ),
       body: SafeArea(
         child: Center(
-          child: ListView(
-            primary: false,
-            children: [
-              CardListLandscape(
-                response: movieViewModel.response,
-                title: AppLocalizations.of(context)!.nowPlayingMovies,
-                moreButton: true,),
-            ],
-          )),
-      ),
-      bottomNavigationBar: BottomAppBar(
-        color: AppColors.secondaryColor,
-        shape: const CircularNotchedRectangle(),
-        notchMargin: 8.0,
-        child: Row(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: <Widget>[
-            IconButton(
-              icon: const Icon(Icons.home_outlined,
-                  color: AppColors.tertiaryColor),
-              onPressed: () {},
-            ),
-            const SizedBox(width: 48.0),
-            IconButton(
-              icon: const Icon(Icons.favorite_outline,
-                  color: AppColors.tertiaryColor),
-              onPressed: () {},
+            child: ListView(
+          primary: false,
+          children: [
+            CardListLandscape(
+              response: movieViewModel.response,
+              title: AppLocalizations.of(context)!.nowPlayingMovies,
+              moreButton: true,
             ),
           ],
-        ),
+        )),
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
         backgroundColor: AppColors.tertiaryColor,
-        child: Image.asset(Constants.images.logo),
-        onPressed: () {},
+        child: const Icon(
+          Icons.favorite,
+        ),
+        onPressed: () {
+          Utils.goView(context, "/favorites");
+        },
       ),
     );
   }
