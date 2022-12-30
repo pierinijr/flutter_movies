@@ -1,3 +1,5 @@
+import 'package:flutter_movies/core/utils.dart';
+
 class DetailsModel {
   String? backdropPath;
   List<Genres>? genres;
@@ -56,7 +58,7 @@ class DetailsModel {
     overview = json['overview'];
     popularity = json['popularity'];
     posterPath = json['poster_path'];
-    releaseDate = json['release_date'];
+    releaseDate = Utils.dateConvert(json['release_date']);
     revenue = json['revenue'];
     runtime = json['runtime'];
     status = json['status'];

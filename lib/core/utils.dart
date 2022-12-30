@@ -55,4 +55,8 @@ class Utils {
       }
     }
   }
+
+  static String dateConvert(String date) {
+    return date.split("-").reversed.join("-");
+  }
 }

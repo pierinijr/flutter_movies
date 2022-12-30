@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_movies/core/utils.dart';
 import 'package:flutter_movies/themes/colors.dart';
-import 'package:flutter_movies/view_model/favorites_view_model.dart';
-import 'package:flutter_movies/view_model/now_playing_view_model.dart';
 import 'package:like_button/like_button.dart';
-import 'package:provider/provider.dart';
 
 class ButtonFavorite extends StatefulWidget {
   const ButtonFavorite({
