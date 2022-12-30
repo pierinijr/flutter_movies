@@ -6,6 +6,7 @@ import 'package:flutter_movies/model/now_playing_model.dart';
 import 'package:flutter_movies/themes/colors.dart';
 import 'package:flutter_movies/view/widgets/box/box_image.dart';
 import 'package:flutter_movies/view/widgets/labels/label_h4.dart';
+import 'package:flutter_movies/view/widgets/labels/label_h5.dart';
 import 'package:flutter_movies/view_model/details_view_model.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:provider/provider.dart';
@@ -65,7 +66,7 @@ class _CardMovieLandscapeState extends State<CardMovieLandscape> {
                             vertical: Constants.spacings.spacing2),
                         child: Row(
                           children: [
-                            LabelH4(
+                            LabelH5(
                               label: widget.movie.voteAverage.toString(),
                               color: AppColors.ratingBar,
                             ),
