@@ -12,4 +12,8 @@ class AppColors {
   
   static const primaryShimmer = Color(0xFF33337A);
   static const secondaryShimmer = Color(0xFFB4B4FA);
+
+  static const primaryFavorite = Color(0xFFF44336);
+  
+  static const secondaryFavorite = Color(0xFF9E9E9E);
 }

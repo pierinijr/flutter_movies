@@ -4,8 +4,10 @@ import 'package:flutter_movies/core/utils.dart';
 import 'package:flutter_movies/languages/generated/app_localizations.dart';
 import 'package:flutter_movies/model/details_model.dart';
 import 'package:flutter_movies/themes/colors.dart';
+import 'package:flutter_movies/view/widgets/buttons/button_favorite.dart';
 import 'package:flutter_movies/view/widgets/labels/label_h1.dart';
 import 'package:flutter_movies/view/widgets/labels/label_h4.dart';
+import 'package:flutter_movies/view/widgets/labels/label_h5.dart';
 import 'package:shimmer/shimmer.dart';
 
 class ViewDetailComplete extends StatefulWidget {
@@ -90,18 +92,29 @@ class _ViewDetailCompleteState extends State<ViewDetailComplete> {
                       padding:
                           EdgeInsets.only(top: Constants.spacings.spacing8),
                       child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          const Icon(
-                            Icons.star,
-                            color: AppColors.ratingBar,
+                          Row(
+                            children: [
+                              const Icon(
+                                Icons.star,
+                                color: AppColors.ratingBar,
+                              ),
+                              Padding(
+                                padding: EdgeInsets.only(
+                                    left: Constants.spacings.spacing8),
+                                child: LabelH4(
+                                    label: (widget.details.voteAverage ?? 0)
+                                        .toString(),
+                                    fontWeightType: FontWeight.bold,
+                                    color: AppColors.ratingBar),
+                              )
+                            ],
                           ),
-                          Padding(
-                            padding: EdgeInsets.only(
-                                left: Constants.spacings.spacing8),
-                            child: LabelH4(
-                                label: (widget.details.voteAverage ?? 0).toString(),
-                                fontWeightType: FontWeight.bold,
-                                color: AppColors.ratingBar),
+                          Row(
+                            children: [
+                              ButtonFavorite(id: widget.details.id)
+                            ],
                           )
                         ],
                       ),
@@ -115,12 +128,12 @@ class _ViewDetailCompleteState extends State<ViewDetailComplete> {
                           maxLines: 2,
                           height: 1.0),
                     ),
-                    LabelH4(
+                    LabelH5(
                       label: releaseDate,
                       color: AppColors.labelSecondaryColor,
                       fontWeightType: FontWeight.bold,
                     ),
-                    LabelH4(
+                    LabelH5(
                       label: duration,
                       color: AppColors.labelSecondaryColor,
                       fontWeightType: FontWeight.bold,
