@@ -1,3 +1,5 @@
+import 'package:flutter_movies/core/utils.dart';
+
 class NowPlayingModel {
   int? page;
   List<Results>? results;
@@ -58,7 +60,7 @@ class Results {
       originalTitle: json['original_title'] ?? "",
       popularity: json['popularity'].toDouble() ?? 0,
       posterPath: json['poster_path'] ?? "",
-      releaseDate: json['release_date'] ?? "",
+      releaseDate: Utils.dateConvert(json['release_date']),
       title: json['title'] ?? "",
       video: json['video'] ?? false,
       voteAverage: json['vote_average'].toDouble() ?? 0,
