@@ -10,11 +10,11 @@ class NowPlayingViewModel extends ChangeNotifier {
     return _apiResponse;
   }
 
-  Future<void> fetchMovieSearchData({String language = "pt-BR", int page = 1}) async {
+  Future<void> fetchNowPlayingMovieData({String language = "pt-BR", int page = 1}) async {
     _apiResponse = ApiResponse.loading('Fetching Movies');
     notifyListeners();
     try {
-      var movies = await MovieServices.getNowPlayingMovies(language, page);
+      var movies = await NowPlayingServices.getNowPlayingMovies(language, page);
       if (movies is Success) {
         _apiResponse = ApiResponse.completed(movies);
       }

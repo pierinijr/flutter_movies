@@ -15,7 +15,7 @@ class _ViewSplashState extends State<ViewSplash> {
   void loadApp(BuildContext context) {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       Provider.of<NowPlayingViewModel>(context, listen: false)
-        .fetchMovieSearchData();
+        .fetchNowPlayingMovieData();
       FlutterNativeSplash.remove();
       Utils.goView(context, "/home");
     });

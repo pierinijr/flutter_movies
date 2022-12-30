@@ -1,4 +1,4 @@
-class MovieDetailModel {
+class DetailsModel {
   String? backdropPath;
   List<Genres>? genres;
   String? homepage;
@@ -19,7 +19,7 @@ class MovieDetailModel {
   double? voteAverage;
   int? voteCount;
 
-  MovieDetailModel(
+  DetailsModel(
       {this.backdropPath,
       this.genres,
       this.homepage,
@@ -40,7 +40,7 @@ class MovieDetailModel {
       this.voteAverage,
       this.voteCount});
 
-  MovieDetailModel.fromJson(Map<String, dynamic> json) {
+  DetailsModel.fromJson(Map<String, dynamic> json) {
     backdropPath = json['backdrop_path'];
     if (json['genres'] != null) {
       genres = <Genres>[];
