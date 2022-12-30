@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_movies/core/utils.dart';
-import 'package:flutter_movies/database/app_database.dart';
 import 'package:flutter_movies/languages/generated/app_localizations.dart';
-import 'package:flutter_movies/model/now_playing_model.dart';
 import 'package:flutter_movies/themes/colors.dart';
 import 'package:flutter_movies/view/widgets/labels/label_h4.dart';
 import 'package:flutter_movies/view/widgets/labels/label_h5.dart';
 import 'package:flutter_movies/view/widgets/lists/card_list_landscape/card_list.dart';
-import 'package:flutter_movies/view_model/favorites_view_model.dart';
 import 'package:flutter_movies/view_model/now_playing_view_model.dart';
 import 'package:provider/provider.dart';
 
