@@ -71,6 +71,7 @@ class _CardMoviePortraitState extends State<CardMoviePortrait> {
                         ),
                         itemCount: 5,
                         itemSize: 15.0,
+                        unratedColor: AppColors.labelSecondaryColor,
                         direction: Axis.horizontal,
                       ),
                     ),

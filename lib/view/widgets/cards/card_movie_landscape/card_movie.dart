@@ -79,6 +79,7 @@ class _CardMovieLandscapeState extends State<CardMovieLandscape> {
                                 ),
                                 itemCount: 5,
                                 itemSize: 20.0,
+                                unratedColor: AppColors.labelSecondaryColor,
                                 direction: Axis.horizontal,
                               ),
                             ),
