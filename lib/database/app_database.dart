@@ -1,4 +1,4 @@
-import 'package:flutter_movies/model/favorite_model.dart';
+import 'package:flutter_movies/model/now_playing_model.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
@@ -11,6 +11,7 @@ class AppDatabase {
           'CREATE TABLE IF NOT EXISTS favorites('
           'id INTEGER PRIMARY KEY, '
           'title STRING, '
+          'releaseDate STRING, '
           'voteAverage DOUBLE, '
           'posterPath STRING)',
         );
@@ -19,22 +20,23 @@ class AppDatabase {
     );
   }
 
-  static Future<List<Favorite>> getAllFavorites() async {
+  static Future<List<Results>> getAllFavorites() async {
     final db = await createDataBase();
 
     final List<Map<String, dynamic>> maps = await db.query('favorites');
 
     return List.generate(maps.length, (i) {
-      return Favorite(
+      return Results(
         id: maps[i]['id'],
         title: maps[i]['title'],
+        releaseDate: maps[i]['releaseDate'],
         voteAverage: maps[i]['voteAverage'],
         posterPath: maps[i]['posterPath'],
       );
     });
   }
 
-  static Future<void> insertFavorite(Favorite favorite) async {
+  static Future<void> insertFavorite(Results favorite) async {
     final db = await createDataBase();
 
     await db.insert(

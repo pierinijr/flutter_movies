@@ -65,4 +65,14 @@ class Results {
       voteCount: json['vote_count'] ?? 0,
     );
   }
+
+  Map<String, dynamic> toMap() {
+    return {
+      'id': id,
+      'title': title,
+      'releaseDate': releaseDate,
+      'voteAverage': voteAverage,
+      'posterPath': posterPath,
+    };
+  }
 }

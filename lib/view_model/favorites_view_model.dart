@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_movies/database/app_database.dart';
-import 'package:flutter_movies/model/favorite_model.dart';
+import 'package:flutter_movies/model/now_playing_model.dart';
 
 class FavoritesViewModel extends ChangeNotifier {
-  List<Favorite> _favorites = [];
+  List<Results> _favorites = [];
 
-  List<Favorite> get favorites {
+  List<Results> get favorites {
     return _favorites;
   }
 
@@ -14,7 +14,7 @@ class FavoritesViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> insertFavorite(Favorite favorite) async {
+  Future<void> insertFavorite(Results favorite) async {
     try {
       await AppDatabase.insertFavorite(favorite);
       await getAllFavorites();
