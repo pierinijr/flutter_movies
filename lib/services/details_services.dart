@@ -2,21 +2,21 @@ import 'dart:io';
 
 import 'package:flutter_movies/extension/response.dart';
 import 'package:flutter_movies/core/constants/constants.dart';
-import 'package:flutter_movies/model/now_playing_model.dart';
+import 'package:flutter_movies/model/details_model.dart';
 import 'package:flutter_movies/services/api_status.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
 
-class NowPlayingServices {
+class DetailsServices {
   static String apiKey = Constants.environment.apiKey;
-  static String movieSearch = Constants.endpoints.movieSearch;
+  static String movieDetails = Constants.endpoints.movieDetails;
 
-  static Future getNowPlayingMovies(String language, int page) async {
+  static Future getDetailsMovie(String language, int movieId) async {
     Response response;
 
     try {
       language = language.isNotEmpty ? "&language=$language" : "";
-      response = await http.get(Uri.parse("$movieSearch?api_key=$apiKey$language&page=$page"));
+      response = await http.get(Uri.parse("$movieDetails$movieId?api_key=$apiKey$language"));
       if (response.statusCode == Constants.statusCode.userInvalidResponse) {
         return Failure(
           code: Constants.statusCode.userInvalidResponse,
@@ -24,7 +24,7 @@ class NowPlayingServices {
       }
 
       var jsonData = response.getData();
-      return Success(response: NowPlayingModel.fromJson(jsonData));
+      return Success(response: DetailsModel.fromJson(jsonData));
       
     } on HttpException {
       return Failure(
