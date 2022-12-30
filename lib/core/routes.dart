@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_movies/model/list_arguments_model.dart';
-import 'package:flutter_movies/view/screens/view_detail.dart';
+import 'package:flutter_movies/view/screens/view_detail/view_detail.dart';
 import 'package:flutter_movies/view/screens/view_home.dart';
 import 'package:flutter_movies/view/screens/view_list.dart';
 import 'package:flutter_movies/view/screens/view_splash.dart';

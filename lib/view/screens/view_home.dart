@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_movies/core/constants/constants.dart';
 import 'package:flutter_movies/languages/generated/app_localizations.dart';
 import 'package:flutter_movies/themes/colors.dart';
 import 'package:flutter_movies/view/widgets/labels/label_h4.dart';
@@ -76,7 +77,7 @@ class _ViewHomeState extends State<ViewHome> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
         backgroundColor: AppColors.tertiaryColor,
-        child: const Icon(Icons.search),
+        child: Image.asset(Constants.images.logo),
         onPressed: () {},
       ),
     );
