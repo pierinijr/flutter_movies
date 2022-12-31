@@ -18,6 +18,7 @@ class ViewPlayer extends StatefulWidget {
 class _ViewPlayerState extends State<ViewPlayer> {
   @override
   void initState() {
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
     SystemChrome.setPreferredOrientations([DeviceOrientation.landscapeLeft]);
     super.initState();
   }
@@ -25,6 +26,8 @@ class _ViewPlayerState extends State<ViewPlayer> {
   @override
   void dispose() {
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
+        overlays: SystemUiOverlay.values);
     super.dispose();
   }
 
@@ -36,42 +39,41 @@ class _ViewPlayerState extends State<ViewPlayer> {
           autoPlay: true, showLiveFullscreenButton: false),
     );
 
-    return Scaffold(
-        backgroundColor: AppColors.primaryColor,
-        body: SafeArea(
-            child: YoutubePlayer(bottomActions: [
-          const SizedBox(width: 14.0),
-          CurrentPosition(),
-          const SizedBox(width: 8.0),
-          ProgressBar(isExpanded: true),
-          RemainingDuration(),
-          const PlaybackSpeedButton(),
-        ], topActions: [
-          GestureDetector(
-            behavior: HitTestBehavior.opaque,
-            onTap: () {
-              SystemChrome.setPreferredOrientations(
-                  [DeviceOrientation.portraitUp]);
-              Navigator.pop(context);
-            },
-            child: Padding(
-              padding: EdgeInsets.all(Constants.spacings.spacing8),
-              child: Row(
-                children: [
-                  const Icon(
-                    Icons.arrow_back,
-                    color: AppColors.labelPrimaryColor,
+    return YoutubePlayerBuilder(
+      player: YoutubePlayer(topActions: [
+        GestureDetector(
+          behavior: HitTestBehavior.opaque,
+          onTap: () {
+            SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
+                overlays: SystemUiOverlay.values);
+            Navigator.pop(context);
+          },
+          child: Padding(
+            padding: EdgeInsets.all(Constants.spacings.spacing8),
+            child: Row(
+              children: [
+                const Icon(
+                  Icons.arrow_back,
+                  color: AppColors.labelPrimaryColor,
+                ),
+                Padding(
+                  padding: EdgeInsets.only(left: Constants.spacings.spacing8),
+                  child: LabelH4(
+                    label: AppLocalizations.of(context)!.back,
                   ),
-                  Padding(
-                    padding: EdgeInsets.only(left: Constants.spacings.spacing8),
-                    child: LabelH4(
-                      label: AppLocalizations.of(context)!.back,
-                    ),
-                  )
-                ],
-              ),
+                )
+              ],
             ),
-          )
-        ], controller: controller, showVideoProgressIndicator: true)));
+          ),
+        )
+      ], controller: controller, showVideoProgressIndicator: true),
+      builder: (context, player) {
+        return SafeArea(
+          child: Container(
+            child: player,
+          ),
+        );
+      },
+    );
   }
 }
