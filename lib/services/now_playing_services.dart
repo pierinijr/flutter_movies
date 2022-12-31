@@ -11,21 +11,27 @@ class NowPlayingServices {
   static String apiKey = Constants.environment.apiKey;
   static String movieSearch = Constants.endpoints.movieSearch;
 
-  static Future getNowPlayingMovies(String language, int page) async {
+  static Future getNowPlayingMovies(String language, int page,
+      {List<Results>? oldResults}) async {
     Response response;
 
     try {
       language = language.isNotEmpty ? "&language=$language" : "";
-      response = await http.get(Uri.parse("$movieSearch?api_key=$apiKey$language&page=$page"));
+      response = await http
+          .get(Uri.parse("$movieSearch?api_key=$apiKey$language&page=$page"));
       if (response.statusCode == Constants.statusCode.userInvalidResponse) {
         return Failure(
-          code: Constants.statusCode.userInvalidResponse,
-          errorResponse: 'Invalid Response');
+            code: Constants.statusCode.userInvalidResponse,
+            errorResponse: 'Invalid Response');
       }
 
       var jsonData = response.getData();
-      return Success(response: NowPlayingModel.fromJson(jsonData));
-      
+
+      NowPlayingModel dataModel = NowPlayingModel.fromJson(jsonData);
+      if (oldResults != null) {
+        dataModel.results = [...oldResults, ...?dataModel.results];
+      }
+      return Success(response: dataModel);
     } on HttpException {
       return Failure(
           code: Constants.statusCode.noInternet,
