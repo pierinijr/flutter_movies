@@ -13,16 +13,20 @@ class NowPlayingModel {
     List<Results> results = <Results>[];
     if (json['results'] != null) {
       json['results'].forEach((result) {
-        results.add(Results.fromJson(result));
+        Results dataResult = Results.fromJson(result);
+        if (dataResult.backdropPath != null &&
+            dataResult.title != null &&
+            dataResult.posterPath != null) {
+          results.add(dataResult);
+        }
       });
     }
 
     return NowPlayingModel(
-      page: json['page'] ?? 0,
-      results: results,
-      totalPages: json['total_pages'] ?? 0,
-      totalResults: json['total_results'] ?? 0
-    );
+        page: json['page'] ?? 0,
+        results: results,
+        totalPages: json['total_pages'] ?? 0,
+        totalResults: json['total_results'] ?? 0);
   }
 }
 

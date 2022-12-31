@@ -11,10 +11,7 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:provider/provider.dart';
 
 class CardMoviePortrait extends StatefulWidget {
-  const CardMoviePortrait({
-    super.key,
-    required this.movie
-  });
+  const CardMoviePortrait({super.key, required this.movie});
 
   final Results movie;
 
@@ -26,16 +23,17 @@ class _CardMoviePortraitState extends State<CardMoviePortrait> {
   @override
   Widget build(BuildContext context) {
     String date = widget.movie.releaseDate ?? "";
-    String releaseDate = date.isEmpty ? "" : AppLocalizations.of(context)!.release + date;
+    String releaseDate =
+        date.isEmpty ? "" : AppLocalizations.of(context)!.release + date;
 
-    double rating = widget.movie.voteAverage != null 
-      ? widget.movie.voteAverage! * 0.5
-      : 0;
-    
+    double rating =
+        widget.movie.voteAverage != null ? widget.movie.voteAverage! * 0.5 : 0;
+
     return GestureDetector(
       behavior: HitTestBehavior.opaque,
       onTap: () {
-        Provider.of<DetailsViewModel>(context, listen: false).fetchDetailsMovieData(widget.movie.id);
+        Provider.of<DetailsViewModel>(context, listen: false)
+            .fetchDetailsMovieData(widget.movie.id);
         Utils.goView(context, "/detail", arguments: widget.movie.id);
       },
       child: SizedBox(
@@ -52,33 +50,38 @@ class _CardMoviePortraitState extends State<CardMoviePortrait> {
                 height: 190,
               ),
               LabelH6(label: widget.movie.title ?? ""),
-              LabelH6(
-                  label: releaseDate, color: AppColors.labelSecondaryColor),
-              Padding(
-                padding: EdgeInsets.symmetric(vertical: Constants.spacings.spacing2),
-                child: Row(
-                  children: [
-                    LabelH6(
-                      label: widget.movie.voteAverage.toString(),
-                      color: AppColors.ratingBar,
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(left: Constants.spacings.spacing8),
-                      child: RatingBarIndicator(
-                        rating: rating,
-                        itemBuilder: (context, index) => const Icon(
-                          Icons.star,
-                          color: AppColors.ratingBar,
-                        ),
-                        itemCount: 5,
-                        itemSize: 15.0,
-                        unratedColor: AppColors.labelSecondaryColor,
-                        direction: Axis.horizontal,
+              LabelH6(label: releaseDate, color: AppColors.labelSecondaryColor),
+              rating == 0.0
+                  ? LabelH6(
+                      label: AppLocalizations.of(context)!.noReviews,
+                      color: AppColors.labelSecondaryColor)
+                  : Padding(
+                      padding: EdgeInsets.symmetric(
+                          vertical: Constants.spacings.spacing2),
+                      child: Row(
+                        children: [
+                          LabelH6(
+                            label: widget.movie.voteAverage.toString(),
+                            color: AppColors.ratingBar,
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(
+                                left: Constants.spacings.spacing8),
+                            child: RatingBarIndicator(
+                              rating: rating,
+                              itemBuilder: (context, index) => const Icon(
+                                Icons.star,
+                                color: AppColors.ratingBar,
+                              ),
+                              itemCount: 5,
+                              itemSize: 15.0,
+                              unratedColor: AppColors.labelSecondaryColor,
+                              direction: Axis.horizontal,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
-                  ],
-                ),
-              ),
             ]),
       ),
     );
