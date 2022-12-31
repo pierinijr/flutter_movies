@@ -40,7 +40,6 @@ class _CardVideoState extends State<CardVideo> {
                 ),
               ),
               SizedBox(
-                width: MediaQuery.of(context).size.width * 0.6,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
