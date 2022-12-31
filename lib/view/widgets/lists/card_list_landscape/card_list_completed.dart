@@ -74,7 +74,9 @@ class _CardListLandscapeCompletedState
                   primary: false,
                   scrollDirection: Axis.horizontal,
                   shrinkWrap: true,
-                  itemCount: movieList.length,
+                  itemCount: movieList.length >= 15 
+                    ? 15 
+                    : movieList.length,
                   itemBuilder: (BuildContext context, int index) {
                     return Padding(
                       padding:
