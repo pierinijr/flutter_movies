@@ -8,9 +8,11 @@ class CardListPortrait extends StatefulWidget {
   const CardListPortrait({
     super.key,
     required this.response,
+    required this.listType
   });
 
   final ApiResponse<dynamic> response;
+  final String listType;
 
   @override
   State<CardListPortrait> createState() => _CardListPortraitState();
@@ -24,7 +26,8 @@ class _CardListPortraitState extends State<CardListPortrait> {
         return const CardListPortraitLoading();
       case Status.completed:
         return CardListPortraitCompleted(
-            response: widget.response);
+          listType: widget.listType,
+          response: widget.response);
       case Status.error:
         String error = widget.response.message ?? "-";
         return CardListError(error: error);

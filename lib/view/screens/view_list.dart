@@ -3,7 +3,7 @@ import 'package:flutter_movies/model/list_arguments_model.dart';
 import 'package:flutter_movies/themes/colors.dart';
 import 'package:flutter_movies/view/widgets/labels/label_h2.dart';
 import 'package:flutter_movies/view/widgets/lists/card_list_portrait/card_list.dart';
-import 'package:flutter_movies/view_model/now_playing_view_model.dart';
+import 'package:flutter_movies/view_model/lists_view_model.dart';
 import 'package:provider/provider.dart';
 
 class ViewList extends StatefulWidget {
@@ -18,7 +18,7 @@ class ViewList extends StatefulWidget {
 class _ViewListState extends State<ViewList> {
   @override
   Widget build(BuildContext context) {
-    NowPlayingViewModel movieViewModel = context.watch<NowPlayingViewModel>();
+    ListsViewModel movieViewModel = context.watch<ListsViewModel>();
     return Scaffold(
       backgroundColor: AppColors.primaryColor,
       appBar: AppBar(
@@ -34,7 +34,10 @@ class _ViewListState extends State<ViewList> {
         centerTitle: true,
       ),
       body: SafeArea(
-        child: CardListPortrait(response: movieViewModel.response),
+        child: CardListPortrait(
+          listType: widget.listDetail.listType,
+          response: movieViewModel.response
+          ),
       )
     );
   }
