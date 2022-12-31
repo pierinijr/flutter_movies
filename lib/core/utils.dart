@@ -38,7 +38,7 @@ class Utils {
   static bool isFavorite(BuildContext context, int? id) {
     if (id != null) {
       bool isFavorite = Provider.of<FavoritesViewModel>(context, listen: false)
-        .verifyFavorite(id);
+          .verifyFavorite(id);
       return isFavorite;
     }
     return false;
@@ -47,16 +47,27 @@ class Utils {
   static void changeFavorite(BuildContext context, int? id, bool isLiked) {
     if (id != null) {
       if (isLiked) {
-        Provider.of<FavoritesViewModel>(context, listen: false).deleteFavorite(id);
+        Provider.of<FavoritesViewModel>(context, listen: false)
+            .deleteFavorite(id);
       } else {
-        Results favorite = Provider.of<NowPlayingViewModel>(context, listen: false)
-          .response.data.response.results.firstWhere((favorite) => favorite.id == id);
-        Provider.of<FavoritesViewModel>(context, listen: false).insertFavorite(favorite);
+        Results favorite =
+            Provider.of<NowPlayingViewModel>(context, listen: false)
+                .response
+                .data
+                .response
+                .results
+                .firstWhere((favorite) => favorite.id == id);
+        Provider.of<FavoritesViewModel>(context, listen: false)
+            .insertFavorite(favorite);
       }
     }
   }
 
-  static String dateConvert(String date) {
+  static String dateConvert(String? date) {
+    if (date == null) {
+      return "";
+    }
+    date = DateTime.parse(date).toString().split(" ")[0];
     return date.split("-").reversed.join("-");
   }
 }
