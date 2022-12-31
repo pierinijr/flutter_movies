@@ -8,6 +8,7 @@ import 'package:flutter_movies/view/widgets/buttons/button_favorite.dart';
 import 'package:flutter_movies/view/widgets/labels/label_h1.dart';
 import 'package:flutter_movies/view/widgets/labels/label_h4.dart';
 import 'package:flutter_movies/view/widgets/labels/label_h5.dart';
+import 'package:flutter_movies/view/widgets/lists/video_list.dart';
 import 'package:shimmer/shimmer.dart';
 
 class ViewDetailComplete extends StatefulWidget {
@@ -31,9 +32,10 @@ class _ViewDetailCompleteState extends State<ViewDetailComplete> {
 
     String votes = "";
     if (widget.details.voteCount != null) {
-      votes = "(${AppLocalizations.of(context)!.votes}${widget.details.voteCount})";
+      votes =
+          "(${AppLocalizations.of(context)!.votes}${widget.details.voteCount})";
     }
-    
+
     return Scaffold(
       body: NestedScrollView(
         headerSliverBuilder: (context, innerBoxIsScrolled) {
@@ -119,16 +121,14 @@ class _ViewDetailCompleteState extends State<ViewDetailComplete> {
                                 padding: EdgeInsets.only(
                                     left: Constants.spacings.spacing8),
                                 child: LabelH4(
-                                      label: votes,
-                                      fontWeightType: FontWeight.bold,
-                                      color: AppColors.ratingBar),
+                                    label: votes,
+                                    fontWeightType: FontWeight.bold,
+                                    color: AppColors.ratingBar),
                               )
                             ],
                           ),
                           Row(
-                            children: [
-                              ButtonFavorite(id: widget.details.id)
-                            ],
+                            children: [ButtonFavorite(id: widget.details.id)],
                           )
                         ],
                       ),
@@ -159,7 +159,9 @@ class _ViewDetailCompleteState extends State<ViewDetailComplete> {
                         label: widget.details.overview,
                         maxLines: 1000,
                       ),
-                    )
+                    ),
+                    if (widget.details.videos != null)
+                      VideoList(videoList: widget.details.videos!.results)
                   ],
                 ),
               ),
