@@ -10,13 +10,15 @@ import 'package:http/http.dart';
 class DetailsServices {
   static String apiKey = Constants.environment.apiKey;
   static String movieDetails = Constants.endpoints.movieDetails;
+  static String listVideos = Constants.endpoints.listVideoParameter;
 
   static Future getDetailsMovie(String language, int movieId) async {
     Response response;
 
     try {
       language = language.isNotEmpty ? "&language=$language" : "";
-      response = await http.get(Uri.parse("$movieDetails$movieId?api_key=$apiKey$language"));
+      response = await http.get(
+        Uri.parse("$movieDetails$movieId?api_key=$apiKey$language$listVideos"));
       if (response.statusCode == Constants.statusCode.userInvalidResponse) {
         return Failure(
           code: Constants.statusCode.userInvalidResponse,

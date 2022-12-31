@@ -13,5 +13,7 @@
   "emptyList": "Esta lista está vazia!",
   "favorites": "Favoritos",
   "emptyFavorites": "Você não tem favoritos",
-  "favoritesHere": "Os filmes que você favoritar aparecerão aqui."
+  "favoritesHere": "Os filmes que você favoritar aparecerão aqui.",
+  "back": "Voltar",
+  "publishedAt": "Publicação: "
 }

@@ -31,6 +31,7 @@ class _CardMovieLandscapeState extends State<CardMovieLandscape> {
         widget.movie.voteAverage != null ? widget.movie.voteAverage! * 0.5 : 0;
 
     return GestureDetector(
+      behavior: HitTestBehavior.opaque,
       onTap: () {
         Provider.of<DetailsViewModel>(context, listen: false)
             .fetchDetailsMovieData(widget.movie.id);
