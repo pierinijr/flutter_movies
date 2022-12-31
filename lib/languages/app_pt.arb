@@ -15,5 +15,7 @@
   "emptyFavorites": "Você não tem favoritos",
   "favoritesHere": "Os filmes que você favoritar aparecerão aqui.",
   "back": "Voltar",
-  "publishedAt": "Publicação: "
+  "publishedAt": "Publicação: ",
+  "loading": "Carregando",
+  "pullUp": "Puxe para cima"
 }
