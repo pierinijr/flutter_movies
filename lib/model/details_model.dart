@@ -20,6 +20,7 @@ class DetailsModel {
   bool? video;
   double? voteAverage;
   int? voteCount;
+  Videos? videos;
 
   DetailsModel(
       {this.backdropPath,
@@ -40,7 +41,8 @@ class DetailsModel {
       this.title,
       this.video,
       this.voteAverage,
-      this.voteCount});
+      this.voteCount,
+      this.videos});
 
   DetailsModel.fromJson(Map<String, dynamic> json) {
     backdropPath = json['backdrop_path'];
@@ -67,6 +69,7 @@ class DetailsModel {
     video = json['video'];
     voteAverage = json['vote_average'];
     voteCount = json['vote_count'];
+    videos = json['videos'] != null ? Videos.fromJson(json['videos']) : null;
   }
 }
 
@@ -77,5 +80,47 @@ class Genres {
   Genres.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     name = json['name'];
+  }
+}
+
+class Videos {
+  Videos({this.results});
+
+  List<VideoResults>? results;
+
+  Videos.fromJson(Map<String, dynamic> json) {
+    List<String> type = ["Teaser", "Trailer", "Clip"];
+    if (json['results'] != null) {
+      results = <VideoResults>[];
+      json['results'].forEach((video) {
+        if (video["site"].contains("YouTube") && type.contains(video["type"])) {
+          results!.add(VideoResults.fromJson(video));
+        }
+      });
+    }
+  }
+}
+
+class VideoResults {
+  String? name;
+  String? key;
+  String? site;
+  String? type;
+  String? publishedAt;
+
+  VideoResults({
+    this.name,
+    this.key,
+    this.site,
+    this.type,
+    this.publishedAt,
+  });
+
+  VideoResults.fromJson(Map<String, dynamic> json) {
+    name = json['name'];
+    key = json['key'];
+    site = json['site'];
+    type = json['type'];
+    publishedAt = json['published_at'];
   }
 }
