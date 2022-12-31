@@ -33,6 +33,7 @@ class _CardMoviePortraitState extends State<CardMoviePortrait> {
       : 0;
     
     return GestureDetector(
+      behavior: HitTestBehavior.opaque,
       onTap: () {
         Provider.of<DetailsViewModel>(context, listen: false).fetchDetailsMovieData(widget.movie.id);
         Utils.goView(context, "/detail", arguments: widget.movie.id);
