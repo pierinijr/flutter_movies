@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_movies/model/now_playing_model.dart';
+import 'package:flutter_movies/languages/generated/app_localizations.dart';
+import 'package:flutter_movies/model/lists_model.dart';
 import 'package:flutter_movies/view_model/favorites_view_model.dart';
-import 'package:flutter_movies/view_model/now_playing_view_model.dart';
+import 'package:flutter_movies/view_model/lists_view_model.dart';
 import 'package:provider/provider.dart';
 
 class Utils {
@@ -50,15 +51,25 @@ class Utils {
         Provider.of<FavoritesViewModel>(context, listen: false)
             .deleteFavorite(id);
       } else {
-        Results favorite =
-            Provider.of<NowPlayingViewModel>(context, listen: false)
+        List<ListsModel> favorite =
+            Provider.of<ListsViewModel>(context, listen: false)
                 .response
                 .data
-                .response
-                .results
-                .firstWhere((favorite) => favorite.id == id);
-        Provider.of<FavoritesViewModel>(context, listen: false)
-            .insertFavorite(favorite);
+                .response;
+
+        Results results = Results();
+
+        for (var element in favorite) {
+            results = element.results!.firstWhere(
+              (favorite) => favorite.id == id, 
+              orElse: () => Results());
+          if (results.id != null) break;
+        }
+        
+        if (results.id != null) {
+          Provider.of<FavoritesViewModel>(context, listen: false)
+              .insertFavorite(results);
+        }
       }
     }
   }
@@ -69,5 +80,31 @@ class Utils {
     }
     date = DateTime.parse(date).toString().split(" ")[0];
     return date.split("-").reversed.join("-");
+  }
+
+  static String listTitle(BuildContext context, String type) {
+    String title = "";
+
+    switch (type) {
+      case "latest":
+        title = AppLocalizations.of(context)!.latest;
+        break;
+      case "now_playing":
+        title = AppLocalizations.of(context)!.nowPlaying;
+        break;
+      case "popular":
+        title = AppLocalizations.of(context)!.popular;
+        break;
+      case "top_rated":
+        title = AppLocalizations.of(context)!.topRated;
+        break;
+      case "upcoming":
+        title = AppLocalizations.of(context)!.upcoming;
+        break;
+      default:
+        title = "";
+    }
+
+    return title;
   }
 }
