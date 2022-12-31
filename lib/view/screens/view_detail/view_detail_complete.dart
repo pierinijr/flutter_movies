@@ -39,8 +39,8 @@ class _ViewDetailCompleteState extends State<ViewDetailComplete> {
         voteAverage = widget.details.voteAverage!.toStringAsFixed(2);
       }
     }                                 
-    String movieCover = Constants.endpoints.movieBackdrop +
-                        widget.details.backdropPath!;
+    String movieCover = Constants.endpoints.movieBackdrop 
+      + (widget.details.backdropPath ?? widget.details.posterPath ?? "");
 
     return Scaffold(
       body: NestedScrollView(
