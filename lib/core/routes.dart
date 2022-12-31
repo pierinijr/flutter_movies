@@ -4,6 +4,7 @@ import 'package:flutter_movies/view/screens/view_detail/view_detail.dart';
 import 'package:flutter_movies/view/screens/view_favorites.dart';
 import 'package:flutter_movies/view/screens/view_home.dart';
 import 'package:flutter_movies/view/screens/view_list.dart';
+import 'package:flutter_movies/view/screens/view_player.dart';
 import 'package:flutter_movies/view/screens/view_splash.dart';
 
 final Map<String, WidgetBuilder> routes = {
@@ -16,4 +17,7 @@ final Map<String, WidgetBuilder> routes = {
     movieId: ModalRoute.of(context)!.settings.arguments as int
   ),
   "/favorites": (context) => const ViewFavorites(),
+  "/video": (context) => ViewPlayer(
+    videoId: ModalRoute.of(context)!.settings.arguments as String
+  ),
 };
