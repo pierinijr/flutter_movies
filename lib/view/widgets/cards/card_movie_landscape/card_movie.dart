@@ -62,32 +62,39 @@ class _CardMovieLandscapeState extends State<CardMovieLandscape> {
                       LabelH4(
                           label: releaseDate,
                           color: AppColors.labelSecondaryColor),
-                      Padding(
-                        padding: EdgeInsets.symmetric(
-                            vertical: Constants.spacings.spacing2),
-                        child: Row(
-                          children: [
-                            LabelH5(
-                              label: widget.movie.voteAverage.toString(),
-                              color: AppColors.ratingBar,
-                            ),
-                            Padding(
-                              padding: EdgeInsets.only(left: Constants.spacings.spacing8),
-                              child: RatingBarIndicator(
-                                rating: rating,
-                                itemBuilder: (context, index) => const Icon(
-                                  Icons.star,
-                                  color: AppColors.ratingBar,
-                                ),
-                                itemCount: 5,
-                                itemSize: 20.0,
-                                unratedColor: AppColors.labelSecondaryColor,
-                                direction: Axis.horizontal,
+                      rating == 0.0
+                          ? LabelH4(
+                              label: AppLocalizations.of(context)!.noReviews,
+                              color: AppColors.labelSecondaryColor)
+                          : Padding(
+                              padding: EdgeInsets.symmetric(
+                                  vertical: Constants.spacings.spacing2),
+                              child: Row(
+                                children: [
+                                  LabelH5(
+                                    label: widget.movie.voteAverage.toString(),
+                                    color: AppColors.ratingBar,
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.only(
+                                        left: Constants.spacings.spacing8),
+                                    child: RatingBarIndicator(
+                                      rating: rating,
+                                      itemBuilder: (context, index) =>
+                                          const Icon(
+                                        Icons.star,
+                                        color: AppColors.ratingBar,
+                                      ),
+                                      itemCount: 5,
+                                      itemSize: 20.0,
+                                      unratedColor:
+                                          AppColors.labelSecondaryColor,
+                                      direction: Axis.horizontal,
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
-                          ],
-                        ),
-                      ),
                     ],
                   ),
                 ),

@@ -35,45 +35,44 @@ class _ViewPlayerState extends State<ViewPlayer> {
   Widget build(BuildContext context) {
     final YoutubePlayerController controller = YoutubePlayerController(
       initialVideoId: widget.videoId,
-      flags: const YoutubePlayerFlags(
-          autoPlay: true, showLiveFullscreenButton: false),
+      flags: const YoutubePlayerFlags(autoPlay: true),
     );
 
-    return YoutubePlayerBuilder(
-      player: YoutubePlayer(topActions: [
-        GestureDetector(
-          behavior: HitTestBehavior.opaque,
-          onTap: () {
-            SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
-                overlays: SystemUiOverlay.values);
-            Navigator.pop(context);
-          },
-          child: Padding(
-            padding: EdgeInsets.all(Constants.spacings.spacing8),
-            child: Row(
-              children: [
-                const Icon(
-                  Icons.arrow_back,
-                  color: AppColors.labelPrimaryColor,
-                ),
-                Padding(
-                  padding: EdgeInsets.only(left: Constants.spacings.spacing8),
-                  child: LabelH4(
-                    label: AppLocalizations.of(context)!.back,
+    return SafeArea(
+      child: YoutubePlayerBuilder(
+        player: YoutubePlayer(topActions: [
+          GestureDetector(
+            behavior: HitTestBehavior.opaque,
+            onTap: () {
+              SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
+                  overlays: SystemUiOverlay.values);
+              Navigator.pop(context);
+            },
+            child: Padding(
+              padding: EdgeInsets.all(Constants.spacings.spacing8),
+              child: Row(
+                children: [
+                  const Icon(
+                    Icons.arrow_back,
+                    color: AppColors.labelPrimaryColor,
                   ),
-                )
-              ],
+                  Padding(
+                    padding: EdgeInsets.only(left: Constants.spacings.spacing8),
+                    child: LabelH4(
+                      label: AppLocalizations.of(context)!.back,
+                    ),
+                  )
+                ],
+              ),
             ),
-          ),
-        )
-      ], controller: controller, showVideoProgressIndicator: true),
-      builder: (context, player) {
-        return SafeArea(
-          child: Container(
+          )
+        ], controller: controller, showVideoProgressIndicator: true),
+        builder: (context, player) {
+          return Container(
             child: player,
-          ),
-        );
-      },
+          );
+        },
+      ),
     );
   }
 }

@@ -26,15 +26,21 @@ class _ViewDetailCompleteState extends State<ViewDetailComplete> {
     String date = widget.details.releaseDate ?? "";
     String releaseDate =
         date.isEmpty ? "" : AppLocalizations.of(context)!.release + date;
-
     String duration = AppLocalizations.of(context)!.duration +
         Utils.getTimeString(widget.details.runtime ?? 0);
-
     String votes = "";
     if (widget.details.voteCount != null) {
       votes =
           "(${AppLocalizations.of(context)!.votes}${widget.details.voteCount})";
     }
+    String voteAverage = "";
+    if (widget.details.voteAverage != null) {
+      if (widget.details.voteAverage! > 0.0) {
+        voteAverage = widget.details.voteAverage!.toStringAsFixed(2);
+      }
+    }                                 
+    String movieCover = Constants.endpoints.movieBackdrop 
+      + (widget.details.backdropPath ?? widget.details.posterPath ?? "");
 
     return Scaffold(
       body: NestedScrollView(
@@ -53,8 +59,7 @@ class _ViewDetailCompleteState extends State<ViewDetailComplete> {
                 children: <Widget>[
                   Positioned.fill(
                       child: Image.network(
-                    Constants.endpoints.movieBackdrop +
-                        widget.details.backdropPath!,
+                    movieCover,
                     fit: BoxFit.cover,
                     errorBuilder: (BuildContext context, Object obj,
                         StackTrace? stackTrace) {
@@ -107,16 +112,15 @@ class _ViewDetailCompleteState extends State<ViewDetailComplete> {
                                 Icons.star,
                                 color: AppColors.ratingBar,
                               ),
-                              Padding(
-                                padding: EdgeInsets.only(
-                                    left: Constants.spacings.spacing8),
-                                child: LabelH4(
-                                    label: (widget.details.voteAverage ?? 0)
-                                        .toStringAsFixed(2)
-                                        .toString(),
-                                    fontWeightType: FontWeight.bold,
-                                    color: AppColors.ratingBar),
-                              ),
+                              if (voteAverage.isNotEmpty)
+                                Padding(
+                                  padding: EdgeInsets.only(
+                                      left: Constants.spacings.spacing8),
+                                  child: LabelH4(
+                                      label: voteAverage,
+                                      fontWeightType: FontWeight.bold,
+                                      color: AppColors.ratingBar),
+                                ),
                               Padding(
                                 padding: EdgeInsets.only(
                                     left: Constants.spacings.spacing8),

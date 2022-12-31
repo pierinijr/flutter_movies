@@ -39,28 +39,29 @@ class _CardVideoState extends State<CardVideo> {
                   color: AppColors.tertiaryColor,
                 ),
               ),
-              SizedBox(
-                width: MediaQuery.of(context).size.width * 0.6,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    LabelH4(
-                      label: widget.videoDetails.name ?? "",
-                      maxLines: 2,
-                      height: 1.0,
-                      fontWeightType: FontWeight.bold,
-                    ),
-                    LabelH6(
-                      label: publishedAt,
-                      color: AppColors.labelSecondaryColor,
-                    ),
-                    LabelH6(
-                      label: widget.videoDetails.type,
-                      color: AppColors.tertiaryColor,
-                      fontWeightType: FontWeight.bold,
-                    ),
-                  ],
+              Expanded(
+                child: SizedBox(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      LabelH4(
+                        label: widget.videoDetails.name ?? "",
+                        maxLines: 2,
+                        height: 1.0,
+                        fontWeightType: FontWeight.bold,
+                      ),
+                      LabelH6(
+                        label: publishedAt,
+                        color: AppColors.labelSecondaryColor,
+                      ),
+                      LabelH6(
+                        label: widget.videoDetails.type,
+                        color: AppColors.tertiaryColor,
+                        fontWeightType: FontWeight.bold,
+                      ),
+                    ],
+                  ),
                 ),
               )
             ],
