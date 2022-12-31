@@ -1,4 +1,4 @@
-import 'package:flutter_movies/model/now_playing_model.dart';
+import 'package:flutter_movies/model/lists_model.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
