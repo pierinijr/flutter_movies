@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_movies/model/now_playing_model.dart';
+import 'package:flutter_movies/model/lists_model.dart';
 import 'package:flutter_movies/services/api_response.dart';
 import 'package:flutter_movies/services/api_status.dart';
-import 'package:flutter_movies/services/now_playing_services.dart';
+import 'package:flutter_movies/services/lists_services.dart';
 
-class NowPlayingViewModel extends ChangeNotifier {
+class ListsViewModel extends ChangeNotifier {
   ApiResponse _apiResponse = ApiResponse.initial('Empty data');
-  int _page = 1;
 
   ApiResponse get response {
     return _apiResponse;
   }
 
-  Future<void> fetchNowPlayingMovieData(
-      {String language = "pt-BR"}) async {
+  Future<void> fetchListsData(
+      {String language = "pt-BR", String? listType}) async {
     if (_apiResponse.status != Status.completed) {
       _apiResponse = ApiResponse.loading('Fetching Movies');
       notifyListeners();
@@ -21,15 +20,14 @@ class NowPlayingViewModel extends ChangeNotifier {
       _apiResponse.status = Status.loading;
     }
     try {
-      List<Results>? oldResults;
+      List<ListsModel>? oldResults;
       
       if (_apiResponse.data != null) {
-        _page += 1;
-        oldResults = _apiResponse.data.response.results;
+        oldResults = _apiResponse.data.response;
       }
 
-      var movies = await NowPlayingServices.getNowPlayingMovies(language, _page,
-          oldResults: oldResults);
+      var movies = await ListsServices.getListsMovies(language,
+          oldResults: oldResults, listType: listType);
 
       if (movies is Success) {
         _apiResponse = ApiResponse.completed(movies);

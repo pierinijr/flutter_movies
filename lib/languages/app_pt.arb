@@ -18,5 +18,10 @@
   "publishedAt": "Publicação: ",
   "loading": "Carregando",
   "pullUp": "Puxe para cima",
-  "noReviews": "Não possui avaliações"
+  "noReviews": "Não possui avaliações",
+  "latest": "Filmes mais recentes",
+  "nowPlaying": "Filmes em exibição",
+  "popular": "Filmes populares",
+  "topRated": "Filmes mais votados",
+  "upcoming": "Próximos lançamentos"
 }

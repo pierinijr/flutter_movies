@@ -9,7 +9,7 @@ import 'package:http/http.dart';
 
 class DetailsServices {
   static String apiKey = Constants.environment.apiKey;
-  static String movieDetails = Constants.endpoints.movieDetails;
+  static String movieDetails = Constants.endpoints.movie;
   static String listVideos = Constants.endpoints.listVideoParameter;
 
   static Future getDetailsMovie(String language, int movieId) async {

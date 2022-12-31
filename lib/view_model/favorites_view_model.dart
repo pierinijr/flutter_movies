@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_movies/database/app_database.dart';
-import 'package:flutter_movies/model/now_playing_model.dart';
+import 'package:flutter_movies/model/lists_model.dart';
 
 class FavoritesViewModel extends ChangeNotifier {
   List<Results> _favorites = [];

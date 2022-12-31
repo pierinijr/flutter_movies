@@ -1,15 +1,16 @@
 import 'package:flutter_movies/core/utils.dart';
 
-class NowPlayingModel {
+class ListsModel {
+  String? type;
   int? page;
   List<Results>? results;
   int? totalPages;
   int? totalResults;
 
-  NowPlayingModel(
-      {this.page, this.results, this.totalPages, this.totalResults});
+  ListsModel(
+      {this.type, this.page, this.results, this.totalPages, this.totalResults});
 
-  factory NowPlayingModel.fromJson(Map<String, dynamic> json) {
+  factory ListsModel.fromJson(Map<String, dynamic> json, String type) {
     List<Results> results = <Results>[];
     if (json['results'] != null) {
       json['results'].forEach((result) {
@@ -22,7 +23,8 @@ class NowPlayingModel {
       });
     }
 
-    return NowPlayingModel(
+    return ListsModel(
+        type: type,
         page: json['page'] ?? 0,
         results: results,
         totalPages: json['total_pages'] ?? 0,

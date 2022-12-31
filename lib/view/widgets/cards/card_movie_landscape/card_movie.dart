@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_movies/core/constants/constants.dart';
 import 'package:flutter_movies/core/utils.dart';
 import 'package:flutter_movies/languages/generated/app_localizations.dart';
-import 'package:flutter_movies/model/now_playing_model.dart';
+import 'package:flutter_movies/model/lists_model.dart';
 import 'package:flutter_movies/themes/colors.dart';
 import 'package:flutter_movies/view/widgets/box/box_image.dart';
 import 'package:flutter_movies/view/widgets/labels/label_h4.dart';

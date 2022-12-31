@@ -5,7 +5,7 @@ import 'package:flutter_movies/themes/colors.dart';
 import 'package:flutter_movies/view/widgets/labels/label_h4.dart';
 import 'package:flutter_movies/view/widgets/labels/label_h5.dart';
 import 'package:flutter_movies/view/widgets/lists/card_list_landscape/card_list.dart';
-import 'package:flutter_movies/view_model/now_playing_view_model.dart';
+import 'package:flutter_movies/view_model/lists_view_model.dart';
 import 'package:provider/provider.dart';
 
 class ViewHome extends StatefulWidget {
@@ -18,7 +18,7 @@ class ViewHome extends StatefulWidget {
 class _ViewHomeState extends State<ViewHome> {
   @override
   Widget build(BuildContext context) {
-    NowPlayingViewModel movieViewModel = context.watch<NowPlayingViewModel>();
+    ListsViewModel movieViewModel = context.watch<ListsViewModel>();
     return Scaffold(
       backgroundColor: AppColors.primaryColor,
       extendBody: true,
@@ -42,16 +42,10 @@ class _ViewHomeState extends State<ViewHome> {
       ),
       body: SafeArea(
         child: Center(
-            child: ListView(
-          primary: false,
-          children: [
-            CardListLandscape(
+            child: CardListLandscape(
               response: movieViewModel.response,
-              title: AppLocalizations.of(context)!.nowPlayingMovies,
               moreButton: true,
-            ),
-          ],
-        )),
+            )),
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: AppColors.tertiaryColor,
