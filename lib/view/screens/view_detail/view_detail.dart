@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_movies/core/utils.dart';
 import 'package:flutter_movies/model/details_model.dart';
-import 'package:flutter_movies/services/api_response.dart';
+import 'package:flutter_movies/repository/api_response.dart';
 import 'package:flutter_movies/view/screens/view_detail/view_detail_complete.dart';
 import 'package:flutter_movies/view/screens/view_detail/view_detail_error.dart';
 import 'package:flutter_movies/view/screens/view_detail/view_detail_loading.dart';

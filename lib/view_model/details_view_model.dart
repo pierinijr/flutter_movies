@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_movies/services/api_response.dart';
-import 'package:flutter_movies/services/api_status.dart';
-import 'package:flutter_movies/services/details_services.dart';
+import 'package:flutter_movies/repository/api_response.dart';
+import 'package:flutter_movies/repository/api_status.dart';
+import 'package:flutter_movies/repository/details_repository.dart';
 
 class DetailsViewModel extends ChangeNotifier {
   ApiResponse _apiResponse = ApiResponse.initial('Empty data');
@@ -17,7 +17,7 @@ class DetailsViewModel extends ChangeNotifier {
       if (movieId == null) {
         _apiResponse = ApiResponse.error("movieId error");
       }
-      var details = await DetailsServices.getDetailsMovie(language, movieId!);
+      var details = await DetailsRepository.getDetailsMovie(language, movieId!);
       if (details is Success) {
         _apiResponse = ApiResponse.completed(details);
       }

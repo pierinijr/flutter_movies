@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_movies/core/utils.dart';
-import 'package:flutter_movies/services/api_response.dart';
+import 'package:flutter_movies/repository/api_response.dart';
 import 'package:flutter_movies/view/widgets/lists/card_list_error.dart';
 import 'package:flutter_movies/view/widgets/lists/card_list_portrait/card_list_completed.dart';
 import 'package:flutter_movies/view/widgets/lists/card_list_portrait/card_list_loading.dart';
