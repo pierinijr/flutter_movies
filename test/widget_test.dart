@@ -1,11 +1,11 @@
 import 'package:flutter_test/flutter_test.dart';
 
-import 'models/details_model.dart';
-import 'models/list_arguments_model.dart';
-import 'models/lists_model.dart';
+import 'model/details_model.dart';
+import 'model/list_arguments_model.dart';
+import 'model/lists_model.dart';
 
 void main() {
-  group('Models Test', () {
+  group('Model Tests', () {
     DetailsModelTest.checkModelReturn();
     ListArgumentsModelTest.checkModelReturn();
     ListsModelTest.checkModelReturn();
