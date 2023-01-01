@@ -64,12 +64,13 @@ class Results {
       id: json['id'] ?? 0,
       originalLanguage: json['original_language'] ?? "",
       originalTitle: json['original_title'] ?? "",
-      popularity: json['popularity'].toDouble() ?? 0,
+      popularity:
+          json['popularity'] != null ? json['popularity'].toDouble() : 0.0,
       posterPath: json['poster_path'] ?? "",
       releaseDate: Utils.dateConvert(json['release_date']),
       title: json['title'] ?? "",
       video: json['video'] ?? false,
-      voteAverage: json['vote_average'].toDouble() ?? 0,
+      voteAverage: json['vote_average'] != null ? json['vote_average'].toDouble() : 0.0,
       voteCount: json['vote_count'] ?? 0,
     );
   }
