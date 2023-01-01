@@ -89,11 +89,10 @@ class Videos {
   List<VideoResults>? results;
 
   Videos.fromJson(Map<String, dynamic> json) {
-    List<String> type = ["Teaser", "Trailer", "Clip"];
     if (json['results'] != null) {
       results = <VideoResults>[];
       json['results'].forEach((video) {
-        if (video["site"].contains("YouTube") && type.contains(video["type"])) {
+        if (video["site"].contains("YouTube")) {
           results!.add(VideoResults.fromJson(video));
         }
       });

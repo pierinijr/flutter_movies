@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_movies/core/constants/constants.dart';
 import 'package:flutter_movies/languages/generated/app_localizations.dart';
 import 'package:flutter_movies/model/lists_model.dart';
-import 'package:flutter_movies/services/api_response.dart';
+import 'package:flutter_movies/repository/api_response.dart';
 import 'package:flutter_movies/view/widgets/cards/card_movie_landscape/card_movie.dart';
 import 'package:flutter_movies/view_model/lists_view_model.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_movies/model/lists_model.dart';
-import 'package:flutter_movies/services/api_response.dart';
-import 'package:flutter_movies/services/api_status.dart';
-import 'package:flutter_movies/services/lists_services.dart';
+import 'package:flutter_movies/repository/api_response.dart';
+import 'package:flutter_movies/repository/api_status.dart';
+import 'package:flutter_movies/repository/lists_repository.dart';
 
 class ListsViewModel extends ChangeNotifier {
   ApiResponse _apiResponse = ApiResponse.initial('Empty data');
@@ -26,7 +26,7 @@ class ListsViewModel extends ChangeNotifier {
         oldResults = _apiResponse.data.response;
       }
 
-      var movies = await ListsServices.getListsMovies(language,
+      var movies = await ListsRepository.getListsMovies(language,
           oldResults: oldResults, listType: listType);
 
       if (movies is Success) {
