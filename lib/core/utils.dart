@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_movies/languages/generated/app_localizations.dart';
 import 'package:flutter_movies/model/lists_model.dart';
+import 'package:flutter_movies/themes/colors.dart';
 import 'package:flutter_movies/view_model/favorites_view_model.dart';
 import 'package:flutter_movies/view_model/lists_view_model.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:provider/provider.dart';
 
 class Utils {
@@ -106,5 +108,16 @@ class Utils {
     }
 
     return title;
+  }
+
+  static void showToast(String message) {
+    Fluttertoast.cancel();
+    Fluttertoast.showToast(
+        msg: message,
+        toastLength: Toast.LENGTH_LONG,
+        gravity: ToastGravity.TOP,
+        backgroundColor: AppColors.primaryFavorite,
+        textColor: AppColors.labelPrimaryColor,
+        fontSize: 12);
   }
 }

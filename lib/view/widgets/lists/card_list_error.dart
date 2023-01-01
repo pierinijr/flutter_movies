@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_movies/core/constants/constants.dart';
 import 'package:flutter_movies/languages/generated/app_localizations.dart';
 import 'package:flutter_movies/themes/colors.dart';
+import 'package:flutter_movies/view/widgets/buttons/button_text.dart';
 import 'package:flutter_movies/view/widgets/labels/label_h4.dart';
+import 'package:restart_app/restart_app.dart';
 
 class CardListError extends StatefulWidget {
   const CardListError({super.key, this.error});
@@ -36,7 +38,12 @@ class _CardListErrorState extends State<CardListError> {
                 maxLines: 2,
                 textAlign: TextAlign.center,
                 color: AppColors.labelSecondaryColor,
-              )
+              ),
+            ButtonText(
+              label: "Tentar novamente", 
+              action: () {
+                Restart.restartApp();
+              })
           ],
         ),
       ),
