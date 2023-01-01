@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_movies/core/utils.dart';
 import 'package:flutter_movies/model/details_model.dart';
 import 'package:flutter_movies/services/api_response.dart';
 import 'package:flutter_movies/view/screens/view_detail/view_detail_complete.dart';
@@ -28,6 +29,7 @@ class _ViewDetailState extends State<ViewDetail> {
         return ViewDetailComplete(details: details);
       case Status.error:
         String error = movieViewModel.response.message ?? "-";
+        Utils.showToast(error);
         return ViewDetailError(error: error);
       default:
         return const ViewDetailError();
