@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_movies/core/app.dart';
-import 'package:flutter_movies/view/widgets/buttons/button_favorite.dart';
 import 'package:flutter_movies/view/widgets/buttons/button_text.dart';
 import 'package:flutter_movies/view/widgets/cards/card_movie_landscape/card_movie.dart';
 import 'package:flutter_movies/view/widgets/cards/card_movie_portrait/card_movie.dart';
