@@ -1,16 +1,50 @@
-# flutter_movies
+# Boas vindas ao repositório Flutter Movie!
 
-A new Flutter project.
+- Nesse projeto foi desenvolvido uma aplicação mobile que é responsável por listar os filmes em exibição, exibir seus detalhes e permitir salvar filmes favoritos.
 
-## Getting Started
+---
 
-This project is a starting point for a Flutter application.
+## 🛠 Tecnologias
 
-A few resources to get you started if this is your first Flutter project:
+Esse projeto foi desenvolvido utilizando:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+* [Flutter](https://flutter.dev/)
+* [Provider](https://pub.dev/packages/provider/)
+* [sqflite](https://pub.dev/packages/sqflite/)
+* [Nock](https://pub.dev/packages/nock)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Versões utilizadas no desenvolvimento:
+
+* Flutter 3.3.10 • channel stable
+* Dart 2.18.6 • DevTools 2.15.0
+
+---
+
+## 📋 Execução
+
+ATENÇÃO: Se você ainda não possui o flutter instalado e configurado, acesse o [site oficial](https://docs.flutter.dev/get-started/install), e siga as instruções da documentação.
+
+Antes de executar o projeto, você precisa ter instalado a seguinte ferramenta:
+
+* O sistema de controle de versões [Git](https://git-scm.com).
+
+Com o sistema configurado, siga as instruções abaixo:
+
+```bash
+# Clonar o repositório
+git clone https://github.com/pimentajr/flutter_movies.git
+
+# Entrar no diretório
+cd flutter_movies
+
+# Baixar as dependências
+flutter pub get
+
+# Executar testes
+flutter test
+
+Observação: Para rodar os testes antes do build no emulador, é necessário rodar o comando 'flutter build apk', caso contrário, poderá apresentar erros ao encontrar os arquivos do AppLocalizations.
+
+# Executar projeto
+Execute o projeto em um emulador Android ou iOS.
+```
