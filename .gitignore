@@ -47,3 +47,4 @@ lib/languages/generated/app_localizations_pt.dart
 lib/languages/generated/app_localizations.dart
 
 coverage
+genhtml.perl

@@ -28,16 +28,6 @@ class Utils {
     return '${hour.toString().padLeft(2, "0")}h ${minutes.toString().padLeft(2, "0")}m';
   }
 
-  static bool verifyCurrentRoute(BuildContext context, String validation) {
-    var route = ModalRoute.of(context);
-
-    if (route != null) {
-      return (route.settings.name ?? "").contains(validation);
-    }
-
-    return false;
-  }
-
   static bool isFavorite(BuildContext context, int? id) {
     if (id != null) {
       bool isFavorite = Provider.of<FavoritesViewModel>(context, listen: false)
