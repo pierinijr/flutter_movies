@@ -4,8 +4,6 @@ import 'package:flutter_movies/repository/api.dart';
 import 'package:flutter_movies/repository/api_status.dart';
 
 class DetailsRepository {
-  static String apiKey = Constants.environment.apiKey;
-  static String movieDetails = Constants.endpoints.movie;
   static String listVideos = Constants.endpoints.listVideoParameter;
 
   static Future getDetailsMovie(String? language, int movieId) async {

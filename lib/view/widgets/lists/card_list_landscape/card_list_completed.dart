@@ -73,8 +73,8 @@ class _CardListLandscapeCompletedState
                   scrollDirection: Axis.horizontal,
                   shrinkWrap: true,
                   physics: const BouncingScrollPhysics(),
-                  itemCount: movieList.length >= 15 
-                    ? 15 
+                  itemCount: movieList.length >= 20 
+                    ? 20
                     : movieList.length,
                   itemBuilder: (BuildContext context, int index) {
                     return Padding(
