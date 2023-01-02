@@ -8,6 +8,7 @@
 
 Esse projeto foi desenvolvido utilizando:
 
+* [API TMDB](https://developers.themoviedb.org/3/getting-started/introduction) -> (É necessário adicionar sua APIKEY no arquivo .env)
 * [Flutter](https://flutter.dev/)
 * [Provider](https://pub.dev/packages/provider/)
 * [sqflite](https://pub.dev/packages/sqflite/)
@@ -39,6 +40,9 @@ cd flutter_movies
 
 # Baixar as dependências
 flutter pub get
+
+# Adicionar APIKEY
+Acesse o arquivo '.env' e adicione sua apikey. O nome ja está preenchido no arquivo (APIKEY=).
 
 # Executar testes
 flutter test
